@@ -1,0 +1,6 @@
+
+export enum STORES {
+	USER_STORE = 'users',
+	PRODUCT_STORE = 'PRODUCT_STORE',
+	ORDER_STORE = 'ORDER_STORE',
+  }
