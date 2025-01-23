@@ -1,11 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-
+import axios from "axios";
+import { useRouter } from "next/navigation";
 const Page = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { email, password } = formData;
+
+    try {
+      const res = await axios.post("/api/auth/login", { email, password });
+      const { token } = res.data;
+
+      if (token) {
+        localStorage.setItem("authToken", token);
+        alert("Login successful!");
+
+        router.push("/");
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-full flex justify-center mt-10 mb-10">
       <div className="mx-auto text-left flex justify-center rounded-md w-full max-w-lg px-4 py-8 sm:p-10 bg-white shadow-xl my-10">
@@ -16,7 +43,7 @@ const Page = () => {
               Login with your email and password
             </p>
           </div>
-          <form className="flex flex-col">
+          <form className="flex flex-col" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-5">
               <div className="form-group">
                 <label className="block text-gray-500 font-medium text-sm mb-2">
@@ -29,10 +56,11 @@ const Page = () => {
                   <input
                     name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="Email"
                     autoComplete="email"
                     className="py-2 pl-10 w-full border text-sm text-gray-900 rounded-md transition focus:outline-none focus:border-emerald-500 h-11"
-                    value="justin@gmail.com"
                   />
                 </div>
               </div>
@@ -47,10 +75,11 @@ const Page = () => {
                   <input
                     name="password"
                     type="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
                     placeholder="Password"
                     autoComplete="current-password"
                     className="py-2 pl-10 w-full border text-sm text-gray-900 rounded-md transition focus:outline-none focus:border-emerald-500 h-11"
-                    value="12345678"
                   />
                 </div>
               </div>
@@ -63,25 +92,9 @@ const Page = () => {
             </div>
           </form>
 
-          <div className="my-4 text-center font-medium">OR</div>
-
-          <div className="flex flex-col mb-4">
-            <button className="inline-flex items-center justify-center py-4 h-12 w-full mb-6 bg-green-600 text-white hover:bg-green-700 rounded-md">
-              <FaGoogle className="text-2xl" />
-              <span className="ml-2">Login With Google</span>
-            </button>
-            <button className="inline-flex items-center justify-center py-4 h-12 w-full mb-6 bg-blue-500 text-white hover:bg-blue-600 rounded-md">
-              <FaFacebookF className="text-2xl" />
-              <span className="ml-2">Login With Facebook</span>
-            </button>
-            <button className="inline-flex items-center justify-center py-4 h-12 w-full bg-gray-700 text-white hover:bg-gray-900 rounded-md">
-              <FaGithub className="text-2xl" />
-              <span className="ml-2">Login With Github</span>
-            </button>
-          </div>
           <div className="text-center text-sm text-gray-900 mt-4">
             <div className="text-gray-500 mt-2.5">
-              Don't have an account?
+              Dont have an account?
               <span className="capitalize text-gray-800 hover:text-cyan-500 font-bold mx-2 cursor-pointer">
                 Sign Up
               </span>

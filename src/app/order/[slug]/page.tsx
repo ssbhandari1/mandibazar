@@ -1,7 +1,5 @@
 import Table from "@/components/common/Table";
 import React from "react";
-import Image from "next/image";
-import caoliflower1 from '../../../components/assets/caoliflower1.jpg'
 import Logo from "@/components/common/logo";
 
 const Page = () => {

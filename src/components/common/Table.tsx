@@ -57,7 +57,7 @@ const getStatusColor = (status:any) => {
           </tr>
         </thead>
         <tbody>
-        {tableData?.map((row: any, rowIndex: number) => (
+        {tableData?.map((row: any) => (
                   <tr key={row?.id} className="hover:bg-gray-50">
                     {tableheaderData?.map((header: any, colIndex: number) => (
                       <td
@@ -69,7 +69,7 @@ const getStatusColor = (status:any) => {
                     ))}
                   </tr>
                 ))}
-          {/* {orders.map((order) => (
+          {orders.map((order) => (
             <tr key={order.id} className="hover:bg-gray-50">
               <td className="border border-gray-300 px-4 py-2">{order.id}</td>
               <td className="border border-gray-300 px-4 py-2">{order.orderTime}</td>
@@ -82,7 +82,7 @@ const getStatusColor = (status:any) => {
                 <button className="text-blue-500 hover:underline">Details</button>
               </td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

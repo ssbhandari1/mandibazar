@@ -74,8 +74,8 @@ const Page = () => {
           <form className="" onSubmit={handleSubmit}>
             <div className="space-y-6 bg-white">
               <div className="flex items-center justify-start gap-3">
-                <div className="mt-1 w-[20rem] h-[20rem] flex bg-gray-400 items-center justify-center"></div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+                <div className="mt-1 w-[20rem] h-[20rem] flex bg-gray-400 items-center justify-center" onChange={handleFileChange}></div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" onChange={handleChange}></div>
               </div>
 
               <div className="text-right mt-6">

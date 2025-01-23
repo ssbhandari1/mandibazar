@@ -47,10 +47,6 @@ const Page = () => {
       action: "details",
     },
   ];
-  const handleLogout = () => {
-    // Perform logout logic here
-    // router.push('/login'); // Redirect to login page after logout
-  };
   return (
     <div className="w-full flex flex-col justify-center mt-10 mb-10 gap-5">
       <h2 className="text-xl font-semibold">Dashboard</h2>

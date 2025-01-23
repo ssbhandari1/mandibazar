@@ -1,6 +1,4 @@
 import React from "react";
-import caoliflower1 from "../../../components/assets/caoliflower1.jpg";
-import Image from "next/image";
 import ListProduct from "@/components/common/ListProduct";
 
 const Popular = () => {

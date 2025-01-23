@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
 import caoliflower1 from "../../components/assets/caoliflower1.jpg";
 import { FaMinus, FaPlus } from "react-icons/fa";

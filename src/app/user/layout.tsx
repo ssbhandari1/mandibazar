@@ -7,7 +7,7 @@ import { FiSettings } from "react-icons/fi";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FiLock } from "react-icons/fi";
 import { useRouter } from "next/navigation";
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const sidebaarLink = [
     {
@@ -68,4 +68,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;

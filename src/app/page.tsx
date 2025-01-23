@@ -1,8 +1,20 @@
+'use client'
 import NextJsCarousel from "@/components/common/Carousel";
 import Category from "@/pages/dashboard/category";
 import Popular from "@/pages/dashboard/popular";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter()
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+      // Redirect to login if no token is found
+      router.push("/auth/login");
+    }
+  }, [router]);
   return (
     <div className="w-full bg-gray-100">
       <div className="w-full p-4 hidden lg:flex">

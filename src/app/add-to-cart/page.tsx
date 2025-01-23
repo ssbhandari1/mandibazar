@@ -135,7 +135,7 @@ const Page = () => {
                     />
                   </div>
                   <div className=" flex flex-1 flex-col justify-between pl-2 gap-2">
-                    <div className=" flex flex-col sm:flex-row justify-between gap-4">
+                    <div className=" flex flex-col justify-between gap-4">
                       <div>
                         <h2 className="font-semibold text-green-700">
                           {product?.name}
@@ -145,21 +145,23 @@ const Page = () => {
                           {product?.description}
                         </span>
                       </div>
-                      <div className="flex items-center space-x-4">
+                      <span className="text-sm font-bold">
+                        $price {product?.price}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-4">
                         <div className="flex items-center border border-gray-300 rounded-md overflow-hidden p-1">
                           <FaMinus className="text-gray-700 cursor-pointer" />
                           <p className="w-12 text-center font-semibold">1</p>
                           <FaPlus className="text-gray-700 cursor-pointer" />
                         </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row  justify-between items-start gap-1">
-                      <div className="text-sm font-bold flex gap-2 justify-center items-center">
-                        $price {product?.price}
-                      </div>
-                      <button className="w-9 h-9 flex items-center justify-center border rounded  hover:bg-red-500 hover:text-white transition">
+                        <button className="w-9 h-9 flex items-center justify-center border rounded  hover:bg-red-500 hover:text-white transition">
                         <FaRegTrashCan />
                       </button>
+                      </div>
+                    <div className="flex flex-col sm:flex-row  justify-between items-start gap-1">
+                     
+                     
                     </div>
                   </div>
                 </li>

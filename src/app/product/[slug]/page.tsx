@@ -3,12 +3,11 @@ import React from "react";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
-import { FaRegTrashCan } from "react-icons/fa6";
 import caoliflower1 from "../../../components/assets/caoliflower1.jpg";
 import ListProduct from "@/components/common/ListProduct";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const handleNavigation = () => {
     router.push('/add-to-cart')
@@ -148,7 +147,7 @@ const page = () => {
                 <FaPlus className="" />
               </div>
               <button className="px-6 py-3 bg-emerald-500 text-white rounded-md hover:bg-emerald-600"
-              onClick={()=> handleNavigation()}>
+                onClick={() => handleNavigation()}>
                 Add to Cart
               </button>
             </div>
@@ -157,12 +156,11 @@ const page = () => {
             <div className="mt-4">
               <p className="text-sm font-semibold text-gray-800">
                 Category:{" "}
-                <a
-                  href="/search?category=cooking-essentials"
+                <span
                   className="text-teal-600 underline"
                 >
                   Cooking Essentials
-                </a>
+                </span>
               </p>
               <div className="mt-2 flex space-x-2">
                 <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">
@@ -176,13 +174,13 @@ const page = () => {
           </div>
 
           {/* Extra Information */}
-          <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12 bg-gray-200 p-2">
+          <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12 bg-gray-200 p-2 rounded-sm">
             <ul className="mt-6 space-y-4 text-sm text-gray-500">
-              <li>Free shipping applies to all orders over €100.</li>
-              <li>Home Delivery within 1 Hour.</li>
-              <li>Cash on Delivery Available.</li>
-              <li>7 Days money-back guarantee.</li>
-              <li>Guaranteed 100% organic from natural products.</li>
+              <li>- Free shipping applies to all orders over €100.</li>
+              <li>- Home Delivery within 1 Hour.</li>
+              <li>- Cash on Delivery Available.</li>
+              <li>- 7 Days money-back guarantee.</li>
+              <li>- Guaranteed 100% organic from natural products.</li>
             </ul>
           </div>
         </div>
@@ -199,4 +197,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

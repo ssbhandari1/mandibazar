@@ -1,5 +1,4 @@
 import Table from "@/components/common/Table";
-import Link from "next/link";
 import React from "react";
 
 const Page = () => {

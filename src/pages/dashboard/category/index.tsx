@@ -255,7 +255,7 @@ const Category = () => {
         <div className="w-full flex justify-center flex-wrap gap-1">
           {categories.map((category: any) => {
             return (
-              <div className="w-[100px] h-[100px] p-1  flex flex-col items-center justify-center rounded-md  bg-white text-center  transition-all duration-300 ease-in-out cursor-pointer border-2 border-gray-300 hover:border-b-black text-[0.5rem] lg:text-[0.7rem]">
+              <div key={category?.categoryId} className="w-[100px] h-[100px] p-1  flex flex-col items-center justify-center rounded-md  bg-white text-center  transition-all duration-300 ease-in-out cursor-pointer border-2 border-gray-300 hover:border-b-black text-[0.5rem] lg:text-[0.7rem]">
                 <div className="flex items-center justify-center p-3 rounded-md">
                   <Image
                     alt="product"

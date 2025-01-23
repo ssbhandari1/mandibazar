@@ -1,71 +1,116 @@
-import React from "react";
-import { FiLock } from "react-icons/fi";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 const Page = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    const { username, email, password, confirmPassword } = formData;
+
+    // Validate form data
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      // Send data to the backend API
+      await axios.post("/api/auth/signup", { username, email, password });
+      alert("Signup successful!");
+      router.push("/auth/login");
+    } catch (error: any) {
+      console.log("errorr",error)
+      setError(
+        error.response?.data?.message || "An error occurred. Please try again."
+      );
+    }
+  };
   return (
-    <div className="w-full flex justify-center mt-10 mb-10">
+    <div className="w-full flex justify-center mt-10 mb-10 text-sm">
       <div className="mx-auto text-left justify-center rounded-md w-full max-w-lg px-4 py-8 sm:p-10 overflow-hidden align-middle transition-all transform bg-white shadow-xl">
-        <div className="overflow-hidden mx-auto">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold font-serif">Signing Up</h2>
-            <p className="text-sm md:text-base text-gray-500 mt-2 mb-8 sm:mb-10">
-              Create an account by signing up with a provider.
-            </p>
-          </div>
-
-          <form className="flex flex-col justify-center mb-6">
-            <div className="grid grid-cols-1 gap-5">
-              <div className="form-group">
-                <label className="block text-gray-500 font-medium text-sm mb-2">
-                  Email
-                </label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-800">
-                    <MdOutlineMailOutline className="text-gray-400" />
-                  </span>
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    autoComplete="email"
-                    className="py-2 pl-10 w-full border text-sm text-gray-900 rounded-md transition focus:outline-none focus:border-emerald-500 h-11"
-                    // value="justin@gmail.com"
-                  />
-                </div>
-              </div>
-             
-              <button
-                type="submit"
-                className="w-full py-3 rounded bg-emerald-500 text-white hover:bg-emerald-600 transition"
-              >
-                SignUp
-              </button>
-            </div>{" "}
-          </form>
-
-          <div className="flex flex-col mb-4">
-            <button className="inline-flex items-center justify-center py-4 h-12 w-full mb-6 bg-green-600 text-white hover:bg-green-700 rounded-md">
-              <FaGoogle className="text-2xl" />
-              <span className="ml-2">Login With Google</span>
-            </button>
-            <button className="inline-flex items-center justify-center py-4 h-12 w-full mb-6 bg-blue-500 text-white hover:bg-blue-600 rounded-md">
-              <FaFacebookF className="text-2xl" />
-              <span className="ml-2">Login With Facebook</span>
-            </button>
-          
-          </div>
-
-          <div className="text-center text-sm text-gray-900 mt-4">
-            <div className="text-gray-500 mt-2.5">
-              Already have an account?
-              <span className="capitalize cursor-pointer text-gray-800 hover:text-cyan-500 font-bold mx-2">
-                Login
-              </span>
+        <div className="max-w-md mx-auto mt-10">
+          <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Name
+              </label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                placeholder="Enter your name"
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
             </div>
-          </div>
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Enter your email"
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Create a password"
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                placeholder="Confirm your password"
+                className="w-full border px-3 py-2 rounded"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition"
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
     </div>
