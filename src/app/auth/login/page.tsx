@@ -29,7 +29,7 @@ const Page = () => {
 
         router.push("/");
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log(error);
     }
   };

@@ -1,8 +1,9 @@
 import Table from "@/components/common/Table";
+import { HeaderType, TableDataType } from "@/components/types";
 import React from "react";
 const Page = () => {
 
-  const tableheaderData: any = [
+  const tableheaderData: HeaderType = [
     { id: "id", name: "ID" },
     { id: "name", name: "Product" },
     { id: "order", name: "Order" },
@@ -12,7 +13,7 @@ const Page = () => {
     { id: "action", name: "Action" },
   ];
 
-  const tableData: any = [
+  const tableData: TableDataType = [
     {
       id: "1",
       img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80",

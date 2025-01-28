@@ -2,8 +2,9 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import caoliflower1 from "../../components/assets/caoliflower1.jpg";
+import { ProductType } from '../types';
 
-const products = [
+const products: ProductType[] = [
   { id: 1, name: "Product 1", description: "Description of Product 1" },
   { id: 2, name: "Product 2", description: "Description of Product 2" },
   { id: 3, name: "Product 3", description: "Description of Product 3" },
@@ -64,7 +65,7 @@ const CustomCarousel = () => {
           className='flex h-full transition-transform duration-300 ease-in-out gap-2'
           style={{ transform: `translateX(-${currentSlide * slideWidth}vw)`, width: `${products.length * slideWidth}vw` }}
         >
-          {products.map((product: any, index) => (
+          {products.map((product: ProductType, index:number) => (
             <div key={index} className='w-[9vw] h-full bg-gray-100 rounded flex flex-col gap-1 items-center justify-center'>
               <div className='w-full h-[90%] box-border flex items-center justify-center p-1'>
               <Image

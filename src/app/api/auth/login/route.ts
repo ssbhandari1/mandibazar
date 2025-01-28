@@ -5,6 +5,10 @@ import { loginUser } from "@/server/users/service";
 export async function POST(req: NextRequest) {
     await connectToDB();
 
+    function isError(obj: unknown): obj is Error {
+        return typeof obj === "object" && obj !== null && "message" in obj;
+    }
+
     try {
         const { email, password } = await req.json();
 
@@ -15,7 +19,11 @@ export async function POST(req: NextRequest) {
             message: "Login successful",
             ...result,
         });
-    } catch (error: any) {
-        return NextResponse.json({ message: error.message }, { status: 400 });
+    } catch (error) {
+        if (isError(error)) {
+            return NextResponse.json({ message: error.message }, { status: 400 });
+        }
+        return NextResponse.json({ message: "An unknown error occurred" }, { status: 400 });
     }
+
 }

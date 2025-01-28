@@ -1,7 +1,8 @@
 import React from "react";
+import { HeaderItem, HeaderType, RowDataType, TableDataType } from "../types";
 
-const Table = ({tableheaderData, tableData}:any) => {
-  const orders = [
+const Table = ({tableheaderData, tableData}:{tableheaderData:HeaderType, tableData:TableDataType}) => {
+  const orders  = [
     {
       id: "101",
       orderTime: "2024-11-18 14:30",
@@ -25,7 +26,7 @@ const Table = ({tableheaderData, tableData}:any) => {
     },
   ];
 // Utility function for conditional styling based on status
-const getStatusColor = (status:any) => {
+const getStatusColor = (status:string) => {
     switch (status) {
       case "Completed":
         return "text-green-500";
@@ -42,7 +43,7 @@ const getStatusColor = (status:any) => {
       <table className="min-w-full border-collapse border border-gray-300 text-left text-sm">
         <thead>
           <tr className="bg-gray-100">
-          {tableheaderData?.map((tHead: any, index: number) => {
+          {tableheaderData?.map((tHead: HeaderItem, index: number) => {
                     return (
                       <th
                         scope={tHead.scop}
@@ -57,9 +58,9 @@ const getStatusColor = (status:any) => {
           </tr>
         </thead>
         <tbody>
-        {tableData?.map((row: any) => (
+        {tableData?.map((row: RowDataType) => (
                   <tr key={row?.id} className="hover:bg-gray-50">
-                    {tableheaderData?.map((header: any, colIndex: number) => (
+                    {tableheaderData?.map((header: HeaderItem, colIndex: number) => (
                       <td
                         key={colIndex}
                         className={`border border-gray-300 px-4 py-2 ${getStatusColor(row?.status)} `}

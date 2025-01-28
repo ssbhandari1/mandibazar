@@ -7,9 +7,10 @@ import { FiSettings } from "react-icons/fi";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FiLock } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import { SidebarLinktype } from "@/components/types";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const sidebaarLink = [
+  const sidebaarLink : SidebarLinktype[]= [
     {
       id: "1",
       name: "DashBoard",
@@ -49,7 +50,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="w-full flex flex-col lg:flex-row items-center lg:items-start justify-around gap-14 p-2 lg:p-10 text-[0.9rem] bg-gray-100">
       <div className="bg-white p-4 w-full lg:w-auto sm:p-5 lg:p-8 rounded-md  lg:sticky top-32">
-        {sidebaarLink?.map((link: any) => {
+        {sidebaarLink?.map((link: SidebarLinktype) => {
           return (
             <span
               key={link.id}

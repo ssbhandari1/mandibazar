@@ -2,7 +2,7 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 
-const Logo = ({ textCLR, handleNavigate }: { textCLR: string, handleNavigate?: any }) => {
+const Logo = ({ textCLR, handleNavigate }: { textCLR: string, handleNavigate }) => {
     return (
         <div className={`flex gap-3 items-center cursor-pointer text-${textCLR}`} onClick={()=>handleNavigate('/')}>
             <FaShoppingBasket className="min-w-12 min-h-12" />

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 
 let isConnected = false;
 
@@ -9,11 +9,14 @@ export const connectToDB = async () => {
   }
 
   try {
-    const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/mandi';
-    const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as any;
+    const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+    const options: ConnectOptions = {
+      // You can add additional options here if needed, like:
+      // user: 'yourUsername',
+      // pass: 'yourPassword',
+      // dbName: 'yourDatabaseName',
+    };
+
 
     const connection = await mongoose.connect(dbUri, options);
     isConnected = true;

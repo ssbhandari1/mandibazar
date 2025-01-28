@@ -34,7 +34,7 @@ const Page = () => {
       await axios.post("/api/auth/signup", { username, email, password });
       alert("Signup successful!");
       router.push("/auth/login");
-    } catch (error: any) {
+    } catch (error) {
       console.log("errorr",error)
       setError(
         error.response?.data?.message || "An error occurred. Please try again."

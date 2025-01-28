@@ -3,6 +3,11 @@ import { hash } from "bcryptjs";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+interface UserData {
+  username: string;
+  email: string;
+  password: string;
+}
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
 
@@ -12,7 +17,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
  * @returns The newly created user
  * @throws Error if validation fails or saving to the database fails
  */
-export const addUser = async (userData: any) => {
+export const addUser = async (userData: UserData) => {
   const { username, email, password } = userData;
 
 
@@ -40,12 +45,13 @@ export const addUser = async (userData: any) => {
 };
 
 
-export const getUser = async (email: any) => {
+export const getUser = async (email: string) => {
   try {
     const user = await User.findOne({ email });
     return user;
-  } catch (error: any) {
-    throw new Error(`Error fetching user: ${error.message}`);
+  } catch (error: unknown) {
+    console.log(error)
+    throw new Error(`Error fetching user: `);
   }
 };
 
@@ -78,7 +84,8 @@ export const loginUser = async (email: string, password: string) => {
         email: user.email,
       },
     };
-  } catch (error: any) {
-    throw new Error(`Login failed: ${error.message}`);
+  } catch (error: unknown) {
+    console.log(error)
+    throw new Error(`Login failed:`);
   }
 };

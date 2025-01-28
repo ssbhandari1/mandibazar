@@ -1,8 +1,27 @@
 import React from "react";
 import caoliflower1 from "../../../components/assets/caoliflower1.jpg";
 import Image from "next/image";
+
+type Product = {
+  productId: string;
+  name: string;
+  description: string;
+  price: number;
+  unit: string;
+  imageUrl: string;
+  inStock: boolean;
+  quantity: number;
+  originalPrice?: number; // Optional, as not all products have it
+  discount?: string; // Optional, as not all products have it
+};
+
+type Category = {
+  categoryName: string;
+  categoryId: string;
+  products: Product[];
+};
 const Category = () => {
-  const categories = [
+  const categories: Category[] = [
     {
       categoryName: "Fruits and Vegetables",
       categoryId: "cat001",
@@ -253,7 +272,7 @@ const Category = () => {
       </div>
       <div className="w-full px-0 lg:px-12">
         <div className="w-full flex justify-center flex-wrap gap-1">
-          {categories.map((category: any) => {
+          {categories.map((category: Category) => {
             return (
               <div key={category?.categoryId} className="w-[100px] h-[100px] p-1  flex flex-col items-center justify-center rounded-md  bg-white text-center  transition-all duration-300 ease-in-out cursor-pointer border-2 border-gray-300 hover:border-b-black text-[0.5rem] lg:text-[0.7rem]">
                 <div className="flex items-center justify-center p-3 rounded-md">

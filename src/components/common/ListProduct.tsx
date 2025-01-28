@@ -4,14 +4,26 @@ import React from "react";
 import caoliflower1 from "../../components/assets/caoliflower1.jpg";
 import { useRouter } from "next/navigation";
 
-const ListProduct = ({ products }: any) => {
+type Product = {
+  productId: string;
+  name: string;
+  description: string;
+  price: number;
+  originalPrice?: number; // Optional, as not all products have it
+  unit: string;
+  imageUrl: string;
+  inStock: boolean;
+  quantity: number;
+  discount?: string; // Optional, as not all products have it
+};
+const ListProduct = ({ products }: {products:Product[]}) => {
   const router = useRouter();
   const handleNavigation = () => {
     router.push('/product/123')
   };
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-      {products.map((product: any) => (
+      {products.map((product: Product) => (
         <div
           key={product.productId}
           className="bg-white rounded-md shadow-sm p-4"
