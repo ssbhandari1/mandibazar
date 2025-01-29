@@ -11,8 +11,9 @@ export default function Home() {
     const token = localStorage.getItem("authToken");
 
     if (!token) {
+      console.log(router)
       // Redirect to login if no token is found
-      router.push("/auth/login");
+      // router.push("/auth/login");
     }
   }, [router]);
   return (
