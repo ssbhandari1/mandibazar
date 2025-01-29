@@ -1,3 +1,4 @@
+'use client'
 import Table from "@/components/common/Table";
 import React from "react";
 import Logo from "@/components/common/logo";
