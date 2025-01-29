@@ -46,7 +46,6 @@ const getStatusColor = (status:string) => {
           {tableheaderData?.map((tHead: HeaderItem, index: number) => {
                     return (
                       <th
-                        scope={tHead.scop}
                         className="border border-gray-300 px-4 py-2 "
                         key={index}
                       >
