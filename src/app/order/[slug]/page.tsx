@@ -1,8 +1,13 @@
 import Table from "@/components/common/Table";
 import React from "react";
 import Logo from "@/components/common/logo";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
+  const handleNavigate = (route: string) => {
+    router.push(`${route}`);
+  };
   return (
     <div className="max-w-screen-2xl mx-auto py-10 px-3 sm:px-6">
       <div className="bg-emerald-100 rounded-md mb-5 px-4 py-3">
@@ -23,7 +28,7 @@ const Page = () => {
                 </h6>
               </div>
               <div className="text-center lg:text-right">
-              <Logo textCLR='green-600'/>
+              <Logo textCLR='green-600'  handleNavigate={handleNavigate} />
                 <p className="text-sm text-gray-500">
                   59 Station Rd, Purls Bridge, United Kingdom
                 </p>

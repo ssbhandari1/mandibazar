@@ -1,6 +1,11 @@
+import { useRouter } from 'next/navigation';
 import Logo from './logo';
 
 export default function Footer() {
+  const router = useRouter();
+  const handleNavigate = (route: string) => {
+    router.push(`${route}`);
+  };
   return (
     <div className="pb-16 lg:pb-0 xl:pb-0 bg-gray-200">
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
@@ -65,7 +70,7 @@ export default function Footer() {
 
           {/* Logo & Contact Info */}
           <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-		  <Logo textCLR='black'/>
+		  <Logo textCLR='black'  handleNavigate={handleNavigate} />
             <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
               987 Andre Plain Suite High Street 838, Lake Hestertown, USA
               <br />
