@@ -1,5 +1,4 @@
 'use client'
-import Table from "@/components/common/Table";
 import React from "react";
 import Logo from "@/components/common/logo";
 import { useRouter } from "next/navigation";
@@ -65,7 +64,6 @@ const Page = () => {
             </div>
           </div>
           <div className="overflow-x-auto px-8 my-10">
-            <Table />
           </div>
           <div className="border-t border-b border-gray-100 p-10 bg-emerald-50">
             <div className="flex flex-col lg:flex-row justify-between pt-4">
