@@ -14,7 +14,7 @@ export const connectToDB = async () => {
       // You can add additional options here if needed, like:
       // user: 'yourUsername',
       // pass: 'yourPassword',
-      // dbName: 'yourDatabaseName',
+      dbName: 'mandi',
     };
 
 
