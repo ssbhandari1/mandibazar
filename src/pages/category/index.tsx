@@ -11,8 +11,8 @@ type Product = {
   imageUrl: string;
   inStock: boolean;
   quantity: number;
-  originalPrice?: number; // Optional, as not all products have it
-  discount?: string; // Optional, as not all products have it
+  originalPrice?: number;
+  discount?: string;
 };
 
 type Category = {
@@ -263,7 +263,7 @@ const Category = () => {
     },
   ];
   return (
-    <div className="w-full bg-gray-100">
+    <div className="w-full  mb-10">
       <div className="text-center h-[30vh] flex flex-col gap-3 items-center justify-center ">
         <h1 className="text-xl font-bold">Featured Categories</h1>
         <span className="text-sm ">

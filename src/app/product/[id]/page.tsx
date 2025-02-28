@@ -6,9 +6,16 @@ import { FaMinus } from "react-icons/fa6";
 import caoliflower1 from "../../../components/assets/caoliflower1.jpg";
 import ListProduct from "@/components/common/ListProduct";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import useGetQuery from "@/components/hooks/useGetQuery";
+import { GET_PRODUCT_URL } from "@/utils/constant";
 
 const Page = () => {
   const router = useRouter();
+  const { id } = useParams<any>()
+
+  const { data, loading, error } = useGetQuery<any[]>(`${GET_PRODUCT_URL}/${id}`, "product");
+  console.log("router@@@@", {id, data})
   const handleNavigation = () => {
     router.push('/add-to-cart')
   };
@@ -119,10 +126,10 @@ const Page = () => {
           <div className="w-5/5 sm:w-3/5  xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
             <div className="mb-4">
               <h1 className="text-2xl font-semibold text-gray-800">
-                ACI Pure Sugar
+                {data?.name}
               </h1>
               <p className="text-sm text-gray-500">
-                SKU: <span className="font-bold">12345</span>
+                SKU: <span className="font-bold">{data?._id}</span>
               </p>
               <span className="bg-green-100 text-green-500 px-2 py-1 rounded-full text-xs font-semibold">
                 Stock: <span className="text-orange-700">206</span>
@@ -191,7 +198,7 @@ const Page = () => {
             Related Products
           </h2>
         </div>
-        <ListProduct products={products} />
+        {/* <ListProduct products={products} /> */}
       </div>
     </div>
   );

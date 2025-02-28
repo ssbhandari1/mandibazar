@@ -9,7 +9,7 @@ export const connectToDB = async () => {
   }
 
   try {
-    const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+    const dbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/mandi';
     const options: ConnectOptions = {
       dbName: 'mandi',
     };

@@ -5,7 +5,7 @@ import caoliflower1 from "../../components/assets/caoliflower1.jpg";
 import { useRouter } from "next/navigation";
 
 type Product = {
-  productId: string;
+  _id: string;
   name: string;
   description: string;
   price: number;
@@ -17,15 +17,17 @@ type Product = {
   discount?: string; // Optional, as not all products have it
 };
 const ListProduct = ({ products }: {products:Product[]}) => {
+  console.log('products$$$$',{products})
   const router = useRouter();
-  const handleNavigation = () => {
-    router.push('/product/123')
+  const handleNavigation = (id: string) => {
+    console.log(id)
+    router.push(`/product/${id}`)
   };
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-      {products.map((product: Product) => (
+      {products?.map((product: Product) => (
         <div
-          key={product.productId}
+          key={product?._id}
           className="bg-white rounded-md shadow-sm p-4"
         >
           <div className="relative">
@@ -35,9 +37,9 @@ const ListProduct = ({ products }: {products:Product[]}) => {
                 {product.quantity}
               </span>
             </span>
-            {product.discount && (
+            {product?.discount && (
               <span className="absolute  right-2 bg-orange-500 text-white text-xs rounded px-2 py-0.5">
-                {product.discount} Off
+                {product?.discount} Off
               </span>
             )}
             <div className="h-40 flex justify-center items-center ">
@@ -53,16 +55,16 @@ const ListProduct = ({ products }: {products:Product[]}) => {
           </div>
           <div className="mt-2">
             <h3 className="text-sm font-semibold cursor-pointer text-gray-800 hover:text-green-500"
-              onClick={handleNavigation}
+              onClick={()=> handleNavigation(product?._id)}
             >
-              {product.name}
+              {product?.name}
             </h3>
             <div className="mt-1 flex items-center justify-between">
               <div className="text-lg font-bold text-gray-800">
-                ${product.price.toFixed(2)}
-                {product.originalPrice && (
+                ${product?.price.toFixed(2)}
+                {product?.originalPrice && (
                   <del className="text-sm text-gray-400 ml-2">
-                    ${product.originalPrice.toFixed(2)}
+                    ${product?.originalPrice.toFixed(2)}
                   </del>
                 )}
               </div>

@@ -27,16 +27,13 @@ const products: ProductType[] = [
 
 ];
 
-
-
 const CustomCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideWidth = 10; // width of each slide in vw
-  const visibleItems = Math.floor(100 / slideWidth); // Calculate visible items based on 100vw
+  const slideWidth = 10;
+  const visibleItems = Math.floor(100 / slideWidth);
 
   const totalSlides = products.length;
 
-  // Check if Next should be disabled based on remaining items
   const canSlideNext = currentSlide < totalSlides - visibleItems;
 
   const handlePrev = () => {

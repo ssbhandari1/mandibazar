@@ -25,8 +25,6 @@ const Page = () => {
 
       if (token) {
         localStorage.setItem("authToken", token);
-        alert("Login successful!");
-
         router.push("/");
       }
     } catch (error: unknown) {
